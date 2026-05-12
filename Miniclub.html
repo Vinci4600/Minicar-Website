@@ -1,0 +1,674 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Mini News</title>
+    <link rel="icon" type="image/png" href="C:\Users\vince\Documents\Module\Modul_293\root(miniseite)">
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+        
+       body {
+  font-size: 16px;
+  padding: 10px;
+  background: white; /* Standard-Hintergrund */
+}
+
+
+    @media screen and (min-width: 480px) {
+        body {
+    font-size: 18px;
+    background-color: rgb(245, 16, 16);
+
+  }
+  nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+	
+}
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .bounce {
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+
+        table {
+            border-collapse: collapse;
+            /* sorgt für saubere Ränder */
+            width: 60%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            /* Kopfzeile grau hinterlegt */
+        }
+
+        body {
+            background-color: #d2c8cf3d;
+            margin: 1;
+            padding: 0;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        }
+
+        .header {
+            /* Flexbox zum Zentrieren */
+            display: flex;
+            flex-direction: column;
+            /* Titel über Menü */
+            align-items: center;
+            /* horizontal zentrieren */
+            gap: 10px;
+            padding: 15px 0;
+
+            /* Fixed zum oben kleben */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+
+            background: white;
+            border-bottom: 2px solid lightgray;
+
+        }
+
+
+
+        a:link,
+        a:visited {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            div {
+                margin: 0 auto;
+                width: auto;
+            }
+        }
+    </style>
+    <style>
+        .news-button {
+            background-color: black;
+            color: white;
+            font-size: 19px;
+            font-weight: bold;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .mews-button {
+            background-color: rgb(203, 203, 203);
+            color: rgb(0, 0, 0);
+            font-size: 19px;
+            font-weight: bold;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .newswrapp {
+
+            height: 100px;
+            border: 2px #d2c8cf3d;
+        }
+
+        .item {
+            background-color: #fdfdff;
+            padding: 20px;
+            justify-content: space-between;
+        }
+
+        .itemcenter {
+            background-color: #fdfdff;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            background: white;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            background: #eee;
+            padding: 10px;
+        }
+
+        .fl_left {
+            float: left;
+            width: 400px;
+            margin-right: 10px;
+        }
+
+        .box {
+            background-color: rgb(233, 226, 226);
+            padding: 10px;
+            clear: both;
+
+        }
+
+        .boxi {
+            background-color: rgb(233, 226, 226);
+            padding: 10px;
+            clear: both;
+
+        }
+
+        .boxiwrapp {
+            display: flex;
+            background-color: rgb(233, 226, 226);
+        }
+
+        .ruswrapp {
+            display: flex;
+
+        }
+
+        .boxwrapp {
+            background-color: rgb(233, 226, 226);
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .middle {
+            /* Flexbox zum Zentrieren */
+            display: flex;
+            flex-direction: column;
+            /* Titel über Menü */
+            align-items: center;
+            /* horizontal zentrieren */
+            gap: 10px;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+
+<body >
+    <div class="newswrapp">
+
+
+        <header class="header">
+            <img src="data:image/png;base64,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"
+            width="200">
+
+            <nav>
+                <a class="news-button" href="#11">Start</a>
+                <a class="news-button" href="#56">BLACKYARD </a>
+                <a class="news-button" href="#Countryman">Countryman</a>
+                <a class="news-button" href="Preis.html">Preise</a>
+                <a class="news-button" href="Formular.html">Formular
+                </a>
+                <a class="news-button" href="überuns.html">Über uns</a>
+            </nav>
+
+        </header>
+
+
+         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="
+        id="11"
+         width="250">
+        <br><h1 id="mini">Mini News</h1>
+
+
+
+
+        <div class="ruswrapp">
+            <div class="boxwrapp">
+                <h1> Fun Electrified</h1>
+                <p>Erleben Sie MINI typisches Gokart-Feeling zu attraktiven Konditionen. Konfigurieren Sie jetzt ganz
+                    einfach
+                    den MINI Electric nach Ihren Bedürfnissen und lassen Sie sich vom MINI Partner ein passendes Angebot
+                    inklusive aller aktuellen Aktionen zustellen. Bitte beachten Sie, dass während der Konfiguration die
+                    Listenpreise noch ohne Rabatte angezeigt werden.</p>
+            </div>
+            <div class="boxwrapp">
+                <h1>Der neue Mini 5 Door</h1>
+                <p>Unser Motto: Maximieren wir die MINIfizierung! Da der zuverlässige MINI 5 door mehr Platz für
+                    Passagiere
+                    und
+                    Gepäck bietet, bekommen Sie mehr in ihn hinein – und können auch mehr aus ihm herausholen! Trotzdem
+                    können
+                    Sie nach wie vor die spritzige Leistung und das Fahrverhalten geniessen, für die der MINI berühmt
+                    ist.
+                    Durch
+                    seinen niedrigen Schwerpunkt und seine kompakten Abmessungen lässt er sich leicht durch enge Gassen
+                    und
+                    in
+                    enge Parkplätzen manövrieren. Mit der breiten Palette an Personalisierungsoptionen können Sie Ihr
+                    ganz
+                    eigenes Modell gestalten. Der Individualist für ein Maximum an Fahrspass bietet alles, was Sie an
+                    einem
+                    MINI
+                    lieben – und mehr.</p>
+            </div>
+            <div class="boxwrapp">
+                <h1>Das neue Mini Cabrio</h1>
+                <p>Das MINI Cabrio ist ein kultivierter Freigeist und der Inbegriff von ungetrübtem Fahrspass unter
+                    freiem
+                    Himmel. Geniessen Sie die Freude, die ein Cabrio mit überlegenem Fahrverhalten und überlegener
+                    Technologie
+                    bietet. Bequeme Sitzplätze für vier Personen und ein elektrisch verstellbares 3-in-1-Softtop laden
+                    zu
+                    Ihrem
+                    nächsten Freiluftabenteuer ein. Mit dem TWIN-Power-Turbomotor, der Sie in weniger als 7 Sekunden auf
+                    100
+                    km/h bringt, können Sie jeden Augenblick nutzen.</p>
+            </div>
+        </div>
+
+
+
+
+
+
+        <h2 id="Countryman">It's not a car - it's a Countryman</h2>
+        <div class="boxiwrapp">
+            <img src="https://alle-autos.nl/uploads/2020/06/Mini%20Countryman%201.jpg" class="fl_left" alt="Logo DB"
+                width="660">
+
+            <p>Unser bisher vielseitigster MINI zieht alle Blicke auf sich. Das geräumige und hochwertige Interieur
+                bietet
+                Platz für fünf Erwachsene – und so viel Fussraum, dass sich selbst der längste Mitfahrer hinten bequem
+                ausstrecken kann. „Countryman for everyone“.</p>
+        </div>
+
+
+
+
+        <h2>Gepäckraum</h2>
+        <div class="boxiwrapp">
+            <img src="https://www.7-forum.com/news/2016/mini_countryman_f60/detail_p90240660-a.jpg" class="fl_left"
+                alt="Logo DB" width="500">
+            <p>Mit bis zu 1.390 Litern Fassungsvermögen bietet der geräumige Gepäckraum des neuen „MINI Countryman“
+                endlos
+                viele Möglichkeiten für den Städtetrip oder die Landpartie.</p>
+        </div>
+
+        <div class="ruswrapp">
+            <div class="boxwrapp">
+                <h2>Freihändig Öffnen</h2>
+
+                <p>Sie haben die Hände voll oder möchten Ihr Gepäck nicht auf den Boden stellen? Dann reicht Ihnen der
+                    „Easy
+                    Opener“ eine helfende Hand beim Beladen des grosszügigen Gepäckraums des „MINI Countryman“. Bewegen
+                    Sie
+                    einfach Ihren Fuss unter der Ladekante und schon öffnet sich die Heckklappe automatisch. Mit einer
+                    zweiten
+                    Fussbewegung schliesst sie sich wieder. Eine echte Hilfe, wenn Sie Ihre Kinder, Haustiere oder
+                    zahlreiche
+                    Einkäufe tragen Verfügbar mit dem Komfortzugang.</p>
+            </div>
+
+            <div class="boxwrapp">
+                <h2>Vorteile de Countryman</h2>
+                <ul>
+                    <li>Schnell und wendig</li>
+                    <li>Bequemes Fahrwerk</li>
+                    <li>Geringer Verbrauch</li>
+                    <li>Viel Platz</li>
+                </ul>
+            </div>
+            <div class="boxwrapp">
+                <h2>Der neue Countryman im Test</h2>
+                <p>Der neue „MINI Countryman“ ist grösser, robuster und solider denn je. Mit seinem stabilen neuen
+                    Design
+                    und
+                    dem innovativen ALL4 Allradantrieb ist er wie dafür geschaffen, Landstrassen, Offroadterrain oder
+                    auch
+                    Stadtgebiete zu erkunden. Erregungszustand versetzt, der sich über den Sehnerv in dem hinteren Teil
+                    Ihres
+                    Gehirns ausbreitet.</p>
+                <p>nberührte Orte abseits ausgetretener Pfade erforschen: mit dem „MINI Countryman“ ein
+                    unvergleichlicher
+                    Spass.
+                    Wenn Sie die Strasse verlassen, entfaltet sich die ganze Kraft. Geniessen Sie das direkte
+                    Fahrverhalten
+                    und
+                    den sicheren Halt auf jedem Gefälle und in jeder Kurve. Bei jeder Bedingung.</p>
+            </div>
+            <div class="boxwrapp">
+                <h2>ALL4</h2>
+                <p>Behalten Sie in jeder Situation die Kontrolle. Der Allradantrieb verteilt die Leistung dynamisch auf
+                    Vorder-
+                    und Hinterachse. Je nach Fahrstil und Strassenhaftung berechnet der ALL4 Allradantrieb das optimale
+                    Drehmoment für jedes Rad. In Extremsituationen kann das gesamte Antriebsmoment auf di e Hinterachse
+                    übertragen werden – so befreien Sie sich aus jeder Lage.</p>
+            </div>
+        </div>
+        <div class="boxiwrapp">
+            <iframe width="660" height="315" src="https://www.youtube.com/embed/ER0h046xm48?si=cfW6jKPCmjxluv2Y"
+                title="YouTube video player" frameborder="0" class="lf_left"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+
+
+        <h2><a href="https://www.mini.de/de_DE/home.html" class="news-button">Zur Website!</a>
+            </style>
+        </h2>
+
+
+
+
+        <div class="item">
+            <h2 id="56">GOKART FÜR ALLE - DIE MINI BLACKYARD FAMILIE</h2>
+            <div class="boxiwrapp">
+                <img src="https://www.merkur.de/assets/images/1/607/1607892-1970706470-mini-blackyard-familie-2Fuy3ilrcOfe.jpg"
+                    alt="Auto" width="500">
+                <br>
+                <p>Die MINI Blackyard Familie kombiniert stilvolles Design und umfangreiche Features mit einem
+                    attraktiven
+                    Preisvorteil von bis zu 3.400 €1 und macht Ihnen den Einstieg zu MINI so leicht wie nie zuvor. Mit
+                    der
+                    MINI
+                    Blackyard Familie von Null auf MINI in Null Komma Nichts.</p>
+            </div>
+            <h2>Das MINI Blackyard Paket im Überblick:</h2>
+            <div class="boxiwrapp">
+                <ul>
+                    <li>Lackierung in Midnight Black oder Nanuq White</li>
+                    <li>17‘‘ U-Spoke grey</li>
+                    <li>Sonnenschutzverglasung</li>
+                    <li>Dunkler Dachhimmel</li>
+                    <li>XS Paket (MINI Head-Up Display, Alarmanlage, Sitzheizung, Wireless Charging)</li>
+
+                </ul>
+            </div>
+            <h2>DER VOLLELEKTRISCHE
+                MINI COOPER.</h2>
+            <div class="boxiwrapp">
+                <p>Der vollelektrische MINI Cooper kombiniert minimalistisches, ikonisches Design mit legendärem
+                    Gokart-Feeling
+                    und einer elektrischen Reichweite von bis zu 400 Kilometern.</p>
+                <img src="https://www.mini.de/content/dam/MINI/common/Range/blackyard/2025/images/mini-blackyard-showroom-J01-wide.webp"
+                    alt="Logo DB" width="500">
+            </div>
+            <h2><a href="https://www.mini.de/forms/rfco/blackyard-campaign-2025/request-for-consultation.html?modelRange=J01"
+                    class="news-button">Angebot Anfragen</a>
+
+            </h2>
+            <br>
+            <h2>DER VOLLELEKTRISCHE
+                MINI ACEMAN.</h2>
+            <div class="boxiwrapp">
+                <p>Der MINI Aceman ist ein vollelektrischer Crossover-SUV mit unglaublicher Vielseitigkeit und
+                    innovativer
+                    Technologie. Er eignet sich perfekt für aktive Familien, urbane Entdecker und zukunftsorientierte
+                    Pioniere.
+                </p>
+                <img src="https://www.mini.de/content/dam/MINI/common/Range/blackyard/2025/images/mini-blackyard-showroom-J05-wide.webp"
+                    class="lf_left" alt="auto" width="600">
+            </div>
+
+            <h2><a href="https://www.mini.de/forms/rfco/blackyard-campaign-2025/request-for-consultation.html?modelRange=J05"
+                    class="news-button">Angebot Anfragen</a>
+
+            </h2>
+            <br>
+            <h2>DER MINI COOPER</h2>
+            <div class="boxiwrapp">
+                <img src="https://www.mini.de/content/dam/MINI/common/Range/blackyard/2025/images/mini-blackyard-showroom-F66-wide.webp"
+                    class="lf_left" alt="auto" width="500">
+
+                <p>Der MINI Cooper kombiniert legendären Cooper Charme mit ikonischem MINI Design. Mit seinem
+                    TwinPower-Turbo-Motor bietet er dynamische Leistung, innovative Technologien und ist der perfekte
+                    urbane
+                    Begleiter. </p>
+            </div>
+
+
+            <h2><a href="https://www.mini.de/forms/rfco/blackyard-campaign-2025/request-for-consultation.html?modelRange=F66"
+                    class="news-button">Angebot Anfragen</a>
+                </style>
+            </h2>
+
+        </div>
+
+
+        <div class="item">
+            <h2>DER VOLLELEKTRISCHE MINI ACEMAN</h2>
+            <div class="boxiwrapp">
+                <img src="https://www.mini.de/de_DE/home/angebote/jcr:content/root/container/stage_copy/motion.wide.1920w.j_1750945334126.jpg"
+                    alt="auto" width="660">
+                <p>Der erste vollelektrische MINI Aceman zieht alle Blicke auf sich. Mit seinem markanten Design und
+                    seiner
+                    temperamentvollen Performance setzt er ein selbstbewusstes Statement. Er bietet Platz für die ganze
+                    Crew
+                    und
+                    vereint urbane Alltagstauglichkeit mit rebellischer Attitude. Erleben Sie vollelektrische
+                    Abenteuerlust
+                    und
+                    sportliches Gokart-Feeling.</p>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+        <div class="item">
+            <h2>ELEKTRISIERENDES GOKART-FEELING</h2>
+            <div class="boxiwrapp">
+                <ul>
+                    <li>Leistung
+
+                        184 - 258 PS</li>
+                    <li>Reichweite (WLTP kombiniert):
+                        290 − 400 km</li>
+                    <li>Batteriekapazität
+                        36,6 – 49,2 kWh</li>
+                </ul>
+                <img src="https://prod.cosy.bmw.cloud/miniweb/cosySec?COSY-EU-100-7331rjFhnOqIbqcPI6L3hpvYLfCny2oWYgpnQ97lX80UrOohYhVAfPXYuN4CB9%25UnpqyBLayV3WJYw1p8ac1QT8RcmZWkyhI%25uzWQdjce0r3aeZQ6KAZfXRjcZwBOmdrx6Kc%252yG84WwBKupC7PFe%252B3inXZIjup2XH5pcv63iprJ8V0GwXHi4TPDo9%25rJHFlMNpou4TJIsDVqL3FlTv0YPCyXIslGAtQuCrv0s9Ol8uE4GA0ogsPYNF9OALU0M7kIogOybA1MnvLUgChDu85GybUEqYtN89ChbNmtf2PoEqhk7f%25FMLNmqn1k%25SDyk7m5V5EkYCn178z3aftE5V1PaXslfN8zVMRragSkPazDxiYAdnMRaYWlBOQ5DxRtesfcZ8YWxfj0WucPteWS6AyDKMfjedwO45BDS6jQ%25g3c2Ydw6ZuUiPptQ%25wc3bOSifZu%25KXwrJHSc3uBr%25ABJdKX324uOeTQBrXpF3tHlZ24riIgMSscpF4HvUbU0KiIFJGbhZABHvIT9hMbO2JGvloqdFgpT9GCrms8fnOl6JQDcpbH8oQt7C9cvANMCOxprg3OYCjTnULB9LntNWcuMFSIjAxpXNCpLX0NDPox92aKbiguscCR2kgYrt35emVAZ8XSAusvXz9mlD4%25P6dEoZIjAeSw27BzctXOPox1qjn3DXYuwiH"
+                    alt="auto" width="660">
+            </div>
+            <p>Der vollelektrische MINI Cooper hat alles, was Sie schon immer an MINI lieben – das unverwechselbare MINI
+                Design, maximales Gokart-Feeling und den typischen niedrigen Schwerpunkt, der für eine extrem sportliche
+                Agilität sorgt.</p>
+            <br>
+            <h1>BESTWERTUNG FÜR DEN MINI COOPER ELECTRIC BEI EURO NCAP</h1>
+            <div class="boxiwrapp">
+                <p>In der jüngsten Euro NCAP Bewertung wurden alle vollelektrischen MINI Cooper Modelle, einschließlich
+                    des
+                    MINI
+                    Cooper E, SE und JCW E, mit der Bestnote von 5 Sternen ausgezeichnet.</p>
+                <br>
+                <p>Zur Höchstwertung tragen neben der aktiven und passiven Sicherheit auch ein wirksamer Schutz für
+                    Fußgänger und Radfahrer sowie effektive Systeme zur Unfallvermeidung bei.</p>
+            </div>
+            <h2>In den vier wichtigsten Sicherheitskategorien erreichten die MINI Modelle bemerkenswerte Bewertungen:
+            </h2>
+            <div class="boxiwrapp">
+                <ul>
+                    <li>89% Insassenschutz für Erwachsene: Eine hohe Konformitätsrate, die typischerweise in größeren
+                        Fahrzeugklassen zu finden ist.</li>
+                    <li>87% Insassenschutz für Kinder: Ausgezeichneter Schutz für jüngere Passagiere.</li>
+                    <li>77% Fußgängerschutz: Hohe Sicherheitsstandards für Kleinwagen.</li>
+                    <li>79% Sicherheitsassistenten: Fortschrittliche Systeme zur Unfallvermeidung.</li>
+
+                </ul>
+                <div class="item">
+                    <img src="https://www.mini.de/content/dam/MINI/common/Range/new-generation/cooper/all-electric/bodytype-hub/mini-J01-ncap-wide.webp"
+                        alt="auto" width="560">
+                </div>
+            </div>
+
+            <div class="item">
+                <h1 id="RENNSPORT"> RENNSPORT LIEGT IN DER FAMILIE</h1>
+                <div class="boxiwrapp">
+                    <img src="https://www.mini.de/de_DE/home/range/john-cooper-works/jcr:content/root/container/stage_copy/motion.superwide.1920w.j_1753266227822.jpg"
+                        alt="auto" width="560">
+
+                    <ul>
+                        <li> Leasingbeispiel für einen MINI John Cooper Works Electric** der BMW Bank GmbH: 36
+                            monatliche
+                            Leasingraten à 399,00 €, Laufzeit 36 Monate, Laufleistung p.a. 10.000 km,
+                            Leasingsonderzahlung
+                            4.318,86
+                            €, Gesamtpreis 18.682,86 €, Anschaffungspreis 40.650,00 € (inkl. Überführungs- und
+                            Übergabekosten in
+                            Höhe von 950,00 € zzgl. Zulassung).</li>
+                        <li>Ein unverbindliches Leasingbeispiel der BMW Bank GmbH, Lilienthalallee 26, 80939 München.
+                            Stand
+                            04/2025.
+                            Alle Preise inkl. der gegebenenfalls gesetzlich anfallenden Umsatzsteuer. Nach den
+                            Leasingbedingungen
+                            besteht die Verpflichtung, für das Fahrzeug eine Vollkaskoversicherung abzuschließen. Gültig
+                            bis
+                            30.06.2025. Erhältlich bei allen MINI Partnern und auf mini.de.</li>
+                        <li>MINI John Cooper Works Electric: WLTP Energieverbrauch kombiniert: 15,5 kWh/100 km; WLTP
+                            CO2-Emissionen
+                            kombiniert: 0 g/km; CO2-Klasse: A; WLTP Elektrische Reichweite: 364 km; Spitzenleistung: 190
+                            kW (258
+                            PS). Abbildung zeigt Sonderausstattungen.</li>
+
+                    </ul>
+                </div>
+
+                <div class="boxiwrapp">
+                <p>Die MINI John Cooper Works Modelle sind inspiriert vom MINI Rennsporterbe und unsere
+                    leistungsstärkste
+                    Option
+                    für diejenigen, die das Beste an Performance-orientierter Technologie und maximales Gokart-Feeling
+                    wollen.
+                    Hinter dem Steuer eines MINI John Cooper Works erleben Sie unsere zahlreichen aufregenden Siege in
+                    Monte-Carlo, Daytona und Watkins Glen hautnah nach.</p>
+                </div>
+                <h2>DAS MINI JOHN COOPER WORKS CABRIO.
+                </h2>
+                <div class="boxiwrapp">
+                <img src="https://www.mini.de/content/dam/MINI/common/Range/new-generation/jcw/bodytype-hub/mini-F67-JCW-family-wide.webp"
+                    width="560">
+                <p>Erleben Sie das pure Hochgefühl eines Cabrios mit exzellentem Handling und brillanter Technologie.
+                    Mit
+                    dem
+                    neuen MINI John Cooper Works Cabrio bekommt Gokart-Feeling mit offenem Verdeck, Sonne im Gesicht und
+                    Wind im
+                    Haar eine ganz neue Bedeutung. MINI typisches Gokart-Feeling, Agilität und ein einzigartiges Gefühl
+                    von
+                    Freiheit gehören zur Serienausstattung.</p>
+                    </div>
+                  <br>  
+                <nav>
+                    <a class="news-button"
+                        href="https://www.mini.de/de_DE/home/range/john-cooper-works/model-hub.31GX.S07KQ.html">Mehr
+                        Erfahren</a>
+                    <a class="mews-button"
+                        href="https://configure.mini.de/de_DE/configure/F67/31GX/FTDJ3,P0C6B,S01CB,S01DF,S01KL,S0223,S0230,S0248,S02PA,S02TC,S02VB,S02VC,S02XK,S0322,S03BF,S0428,S0430,S0431,S0478,S0494,S04FN,S04VF,S0548,S05A4,S05AC,S05AS,S05AV,S05DM,S0654,S0688,S06AD,S06AE,S06AF,S06NX,S06PA,S06WE,S07KQ,S0851,S0879,S08KA,S08R3,S08R9,S08TF,S08TV,S09T9">Jetzt
+                        Konfigurieren</a>
+                </nav>
+                
+                <h2>MINI JOHN COOPER WORKS ELECTRIC</h2>
+                <div class="boxiwrapp">
+                <img src="https://www.mini.de/content/dam/MINI/common/Range/new-generation/jcw/bodytype-hub/mini-J01-JCW-family-wide.webp" 
+                    width="560">
+
+                <p>Der MINI John Cooper Works war schon immer eine Klasse für sich. Jetzt sorgt der vollelektrische MINI
+                    John
+                    Cooper Works mit direktem Drehmoment, atemberaubender Beschleunigung und aufregender Dynamik für ein
+                    Gokart-Feeling, das neue aufregende Dimensionen erreicht.</p>
+                    </div>
+                    <br>
+
+                <nav>
+                    <a class="news-button"
+                        href="https://www.mini.de/de_DE/home/range/john-cooper-works/model-hub.11HF.S07KQ.html">Mehr
+                        Erfahren</a>
+                    <a class="mews-button"
+                        href="https://configure.mini.de/de_DE/configure/J01/11HF/FTDJ3,P0C6P,S01QM,S0230,S0248,S02PA,S02VB,S02VC,S02XK,S0302,S0322,S03A3,S03A8,S0428,S0430,S0431,S0478,S0494,S04AA,S04FN,S04T2,S04U8,S04U9,S04VF,S0548,S05A4,S05AC,S05AS,S05AV,S05DM,S0654,S0688,S06AD,S06AE,S06AF,S06NX,S06PA,S06WE,S07KQ,S0853,S087A,S08R3,S08R9,S0993,S09T9/SE000038">Jetzt
+                        Konfigurieren</a>
+                </nav>
+                
+                <h2>MINI JOHN COOPER WORKS ACEMAN ELECTRIC</h2>
+                <div class="boxiwrapp">
+                <img src="https://www.mini.de/content/dam/MINI/common/Range/new-generation/jcw/bodytype-hub/mini-J05-JCW-family-wide.webp"
+                    width="560">
+                <p>Unser vollelektrisches Crossover Modell schafft die ideale Balance zwischen beeindruckender Power und
+                    sportlichem Handling. Der moderne Innenraum bietet Platz für 5 Sitze.</p>
+                    </div>
+                    <br>
+                <nav>
+                    <a class="news-button"
+                        href="https://www.mini.de/de_DE/home/range/john-cooper-works/model-hub.21HF.S07KQ.html">Mehr
+                        Erfahren</a>
+                    <a class="mews-button"
+                        href="https://configure.mini.de/de_DE/configure/J05/21HF/FTDJ3,P0C6P,S01QS,S0230,S0248,S02PA,S02VB,S02VC,S02XK,S0302,S0322,S0386,S03A3,S03A8,S0428,S0430,S0431,S0478,S0494,S04AA,S04FN,S04T2,S04U8,S04U9,S04VF,S0548,S05A4,S05AC,S05AS,S05AV,S05DM,S0654,S0688,S06AD,S06AE,S06AF,S06NX,S06PA,S06WE,S07KQ,S0853,S087A,S08R3,S08R9,S08TF,S0993,S09T9/SE000038">Jetzt
+                        Konfigurieren</a>
+                </nav>
+                <br>
+                <h2>MINI JOHN COOPER WORKS</h2>
+                <div class="boxiwrapp">
+                <img src="https://www.mini.de/content/dam/MINI/common/Range/new-generation/jcw/bodytype-hub/mini-F66-JCW-family-wide.webp"
+                    width="560">
+                <p>Er ist kühner, schneller und bereit, Grenzen zu verschieben. Mit seinem imposanten Stand und dem
+                    markanten
+                    düsteren Look ist der neue MINI John Cooper Works der Inbegriff fahrdynamischer Extraklasse und
+                    maximaler
+                    Gokart-Performance. Nun fehlen nur noch Sie, hinter dem Steuer.</p>
+                    </div>
+                    <br>
+                <nav>
+                    <a class="news-button"
+                        href="https://www.mini.de/de_DE/home/range/john-cooper-works/model-hub.31GD.S07KQ.html">Mehr
+                        Erfahren</a>
+                    <a class="mews-button"
+                        href="https://configure.mini.de/de_DE/configure/F66/31GD/FTDJ3,P0C6B,S01CB,S01DF,S01KL,S0223,S0230,S0248,S02PA,S02TC,S02VB,S02VC,S02XK,S0302,S0322,S03A3,S0428,S0430,S0431,S0478,S0494,S04AA,S04FN,S04VF,S0548,S05A4,S05AC,S05AS,S05AV,S05DM,S0654,S0688,S06AD,S06AE,S06AF,S06NX,S06PA,S06WE,S07KQ,S0851,S0879,S08KA,S08R3,S08R9,S08TF,S09T9">Jetzt
+                        Konfigurieren</a>
+
+                </nav>
+
+
+
+
+
+                <div class="middle"> <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/r-RStrA8NtA?si=G76AdYdWdQLFZ9hN" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+
+
+
+            </div>
+        </div>
+</body>

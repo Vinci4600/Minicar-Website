@@ -14,3 +14,9 @@ Ziel des Projekts ist es, die Grundlagen von HTML sowie den Aufbau und die Gesta
 Der Zweck ist die Bereitstellung von Informationen zu den verschiedenen Autos und einen Direkten Link zu den Jeweiligen Autos im Handel.
 
 <img width="1896" height="960" alt="image" src="https://github.com/user-attachments/assets/8da04802-f1ad-4e10-9f49-b12ef8e6b997" />
+
+<img width="1893" height="1032" alt="image" src="https://github.com/user-attachments/assets/16d2e30d-22e0-4f8c-8ad8-b8f55bf68606" />
+
+<img width="1899" height="1038" alt="image" src="https://github.com/user-attachments/assets/ff1f527b-162f-4d12-b339-1dfc18617c99" />
+
+

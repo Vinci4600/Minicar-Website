@@ -8,12 +8,7 @@ Die Website beschäftigt sich mit verschiedenen Minicars und stellt Informatione
 
 Ziel des Projekts ist es, die Grundlagen von HTML sowie den Aufbau und die Gestaltung einer einfachen Website praktisch anzuwenden.
 
-## Bilder
-<img width="1896" height="960" alt="image" src="https://github.com/user-attachments/assets/8da04802-f1ad-4e10-9f49-b12ef8e6b997" />
 
-<img width="1893" height="1032" alt="image" src="https://github.com/user-attachments/assets/16d2e30d-22e0-4f8c-8ad8-b8f55bf68606" />
-
-<img width="1899" height="1038" alt="image" src="https://github.com/user-attachments/assets/ff1f527b-162f-4d12-b339-1dfc18617c99" />
 
 
 ## Zweck des Projekts
@@ -32,6 +27,12 @@ Den Projektordner öffnen und die Startseite index.html im Browser öffnen.
 <img width="820" height="366" alt="image" src="https://github.com/user-attachments/assets/27edaeac-44e4-4bdd-995f-64b2aa93a4d5" />
 
 Anschließend kann die Minicar-Webseite direkt im Browser verwendet werden.
+## Bilder
+<img width="1896" height="960" alt="image" src="https://github.com/user-attachments/assets/8da04802-f1ad-4e10-9f49-b12ef8e6b997" />
+
+<img width="1893" height="1032" alt="image" src="https://github.com/user-attachments/assets/16d2e30d-22e0-4f8c-8ad8-b8f55bf68606" />
+
+<img width="1899" height="1038" alt="image" src="https://github.com/user-attachments/assets/ff1f527b-162f-4d12-b339-1dfc18617c99" />
 
 
 

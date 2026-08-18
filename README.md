@@ -23,6 +23,9 @@ Das Repository klonen oder die ZIP-Datei herunterladen.
 ### 2. ZIP-Datei extrahieren oder Klonen
 Falls das Projekt als ZIP-Datei heruntergeladen wurde, beide Projektordner extrahieren.
 <img width="836" height="200" alt="image" src="https://github.com/user-attachments/assets/e52d6fe7-02ca-4353-b6cd-665d4243fb41" />
+#### Klonen 
+<img width="819" height="33" alt="image" src="https://github.com/user-attachments/assets/e456d4c0-91c8-47a8-aea5-b058c0c86a8f" />
+
 ### 3. Webseite öffnen
 Den Projektordner öffnen und die Startseite index.html im Browser öffnen.
 <img width="820" height="366" alt="image" src="https://github.com/user-attachments/assets/27edaeac-44e4-4bdd-995f-64b2aa93a4d5" />

@@ -18,8 +18,9 @@ Der Zweck ist die Bereitstellung von Informationen zu den verschiedenen Autos un
 ## Ausführung der Minicar Webseite
 ### 1. Projekt Herunterladen
 Das Repository klonen oder die ZIP-Datei herunterladen.
-<img width="1119" height="554" alt="image" src="https://github.com/user-attachments/assets/d34510ac-225a-4c9d-8572-9fe6eb48d00d" />
-### 2. ZIP-Datei extrahieren
+<img width="1136" height="558" alt="image" src="https://github.com/user-attachments/assets/cee12ccf-f20a-4f8e-a2f4-250675612a5f" />
+
+### 2. ZIP-Datei extrahieren oder Klonen
 Falls das Projekt als ZIP-Datei heruntergeladen wurde, beide Projektordner extrahieren.
 <img width="836" height="200" alt="image" src="https://github.com/user-attachments/assets/e52d6fe7-02ca-4353-b6cd-665d4243fb41" />
 ### 3. Webseite öffnen
